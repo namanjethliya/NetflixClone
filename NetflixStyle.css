@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 20px;
+}
+.searchBar{
+    font-size: 20px;
+    align-items: center;
+    padding: 1rem;
+    width: 40rem;
+}
+
+.submitbtn{
+    font-size: 20px;
+    padding: 1rem;
+    width: 15rem;
+}
+
+.postersTab{
+    display: flex;
+    padding: .15rem;
+
+}
+.posters{
+    width: 150px;
+    height: 200px;
+    padding: .15rem;
+}
+
+.bigPoster {
+    width: 200px;
+    height: 250px;
+    padding: .15rem;
+}
+
+.searchMovieTab{
+    width: 500px;
+    height: 500px;
+    display: none;
+}
+.showMovieTab{
+    width: 500px;
+    height: 500px;
+    display: flex;
+}
