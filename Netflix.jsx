@@ -9,6 +9,7 @@ function Netflix() {
   const [movie, setMovie] = useState('')
   const [display, setDisplay] = useState('')
   const [style, setStyle] = useState('searchMovieTab')
+  const [searchMovie, setSearchMovie] = useState('display')
   // const imageBase = 'https://image.tmdb.org/t/p/original/'
 
 
@@ -17,8 +18,10 @@ function Netflix() {
   }
 
   function showMovie(event) {
+    // console.log(movie)
     // useEffect(() => {
     // },[])
+    event.preventDefault()
 
     async function getData() {
       const data = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=df41664279ac4a308d8b915accc1f0e4&language=en-US&query=${movie}&page=1&include_adult=false`)
@@ -26,8 +29,8 @@ function Netflix() {
       setDisplay(data.data.results)
     }
     getData();
-    event.preventDefault()
     setStyle("showMovieTab");
+    setSearchMovie("displaySearch")
   }
   console.log(display)
 
@@ -41,18 +44,31 @@ function Netflix() {
 
       </div>
       <div className={style}>
-        <div>
-        {display.map((data, index) => {
-          return (
-            <div key={index} >
-              <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} alt={data.original_title || data.name} />
-            </div>
-          )
-        })}
-        </div>
+        <div className='searchHeading'>
+         <h2>The results as per search {movie} are as follows:</h2>
+         </div>
+        {
+          display &&
+          display.map((data, index) => {
+            return (
+              <div key={index} className='ImageTab' >
+                <div>
+                <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} alt={data.original_title || data.name} className='searchImage' />
+                </div>
+                <div className='movieDetails'>
+                  <h2 className='movieTitle'> Title- {data.title}</h2>
+                  <p className='movieOverview'><h4>Overview-</h4> {data.overview}</p>
+                  <h3 className='movieRelease'>Release Date- {data.release_date}</h3>
+                  <h3 className='movieRating'>Rating- {data.vote_average}</h3>
+                  <h4 className='movieLanguage'>Language- {data.original_language}</h4>
+                </div>
+              </div>
+            )
+          })
+        }
       </div>
 
-      <div className='display'>
+      <div className={searchMovie}>
         <Row
           isBigger={true}
           endpoint={requests.fetchTrending}
