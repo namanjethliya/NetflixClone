@@ -4,23 +4,28 @@ import NetflixStyle from './NetflixStyle.css'
 import requests from './requests'
 import { useEffect } from 'react'
 import Row from './Row'
+import Banner from './Banner'
+import NetflixLogo from './images/netflix-logo.png'
 
 function Netflix() {
   const [movie, setMovie] = useState('')
   const [display, setDisplay] = useState('')
   const [style, setStyle] = useState('searchMovieTab')
   const [searchMovie, setSearchMovie] = useState('display')
-  // const imageBase = 'https://image.tmdb.org/t/p/original/'
+  const [resetHome, setHome] = useState('displaySearch')
+
+  const imageBasePath = 'https://image.tmdb.org/t/p/original/'
 
 
   function handleChange(e) {
     setMovie(e.target.value)
   }
 
+  function Home(){
+    setHome("display")
+  }
+
   function showMovie(event) {
-    // console.log(movie)
-    // useEffect(() => {
-    // },[])
     event.preventDefault()
 
     async function getData() {
@@ -36,30 +41,35 @@ function Netflix() {
 
   return (
     <div>
-      <div id="search">
-        <form onSubmit={showMovie}>
-          <input type="text" className="searchBar" value={movie} placeholder="ENTER A MOVIE" onChange={handleChange} />
-          <input type='submit' className="submitbtn" value='Submit' />
-        </form>
+      <div className="NavBar">
+          <div className='logo'>
+          <img src={NetflixLogo} onClick={Home} />
+          </div>
 
+        <div id="search">
+          <form onSubmit={showMovie}>
+            <input type="text" className="searchBar" value={movie} placeholder="SEARCH MOVIE" onChange={handleChange} />
+            <input type='submit' className="submitbtn" value='Search' />
+          </form>
+        </div>
       </div>
-      <div className={style}>
-        <div className='searchHeading'>
-         <h2>The results as per search {movie} are as follows:</h2>
-         </div>
+      <div className={style}> 
+        <div className='searchHeading'> 
+          <h2>The results as per search {movie} are as follows:</h2>
+        </div>
         {
           display &&
           display.map((data, index) => {
             return (
               <div key={index} className='ImageTab' >
                 <div>
-                <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} alt={data.original_title || data.name} className='searchImage' />
+                  <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} alt={data.original_title || data.name} className='searchImage' />
                 </div>
                 <div className='movieDetails'>
-                  <h2 className='movieTitle'> Title- {data.title}</h2>
+                  <h2 className='movieTitle'>{data.title}</h2>
                   <p className='movieOverview'><h4>Overview-</h4> {data.overview}</p>
-                  <h3 className='movieRelease'>Release Date- {data.release_date}</h3>
-                  <h3 className='movieRating'>Rating- {data.vote_average}</h3>
+                  <h4 className='movieRelease'>Release Date- {data.release_date}</h4>
+                  <h4 className='movieRating'>Rating- {data.vote_average}</h4>
                   <h4 className='movieLanguage'>Language- {data.original_language}</h4>
                 </div>
               </div>
@@ -69,6 +79,7 @@ function Netflix() {
       </div>
 
       <div className={searchMovie}>
+      <Banner endPoint={requests.fetchTrending}  />
         <Row
           isBigger={true}
           endpoint={requests.fetchTrending}

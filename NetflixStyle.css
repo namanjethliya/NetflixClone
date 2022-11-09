@@ -4,6 +4,57 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+.NavBar{
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    z-index: 22;
+    align-items: center;
+    width: 100%;
+    top: 0;
+}
+.logo{
+    background-color: '#000'
+}
+
+.logo img{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+.banner{
+    z-index: 11;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    color: #fff;
+}
+.bannerDetails{
+    padding: 1rem;
+}
+.bannerButton a{
+    text-decoration: none;
+    color: inherit;
+}
+.bannerButton button{
+    padding: 10px 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.bannerOverview{
+    padding: 20px 0;
+    width: 400px;
+}
+
+.bannerHeading{
+    font-size: 5rem;
+    padding-bottom: 20px;
+}
 
 #search{
     display: flex;
@@ -14,28 +65,40 @@
 .searchBar{
     font-size: 20px;
     align-items: center;
-    padding: 1rem;
-    width: 40rem;
+    padding: .25rem;
+    width: 15rem;
 }
 
 .submitbtn{
     font-size: 20px;
-    padding: 1rem;
-    width: 15rem;
+    padding: .25rem;
+    width: 5rem;
 }
 
+.main::-webkit-scrollbar    {
+    display: none;
+}
+
+.heading{
+ margin: 1rem .5rem;
+}
 .postersTab{
     display: flex;
     padding: .15rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: none;
 
 }
+
 .posters{
     width: 150px;
     height: 200px;
     padding: .15rem;
+    
 }
 
-.bigPoster {
+.bigPoster{
     width: 200px;
     height: 250px;
     padding: .15rem;
@@ -53,6 +116,8 @@
 .searchHeading{
     display: block;
     flex-direction: column;
+    margin-top: 6rem;
+
 }
 .searchImage{
     width: 200px;
@@ -62,6 +127,10 @@
 .displaySearch{
     display: none;
 }
+.disableBanner{
+    display: none;
+}
+
 .ImageTab{
     display: flex;
 }
