@@ -127,10 +127,12 @@
 .displaySearch{
     display: none;
 }
-.disableBanner{
+.disableSearch{
     display: none;
 }
-
+.display{
+    display: block;
+}
 .ImageTab{
     display: flex;
 }

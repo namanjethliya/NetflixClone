@@ -9,10 +9,10 @@ import NetflixLogo from './images/netflix-logo.png'
 
 function Netflix() {
   const [movie, setMovie] = useState('')
-  const [display, setDisplay] = useState('')
+  const [displayM, setDisplay] = useState('')
   const [style, setStyle] = useState('searchMovieTab')
   const [searchMovie, setSearchMovie] = useState('display')
-  const [resetHome, setHome] = useState('displaySearch')
+  const [resetHome, setHome] = useState('showMovieTab')
 
   const imageBasePath = 'https://image.tmdb.org/t/p/original/'
 
@@ -21,9 +21,6 @@ function Netflix() {
     setMovie(e.target.value)
   }
 
-  function Home(){
-    setHome("display")
-  }
 
   function showMovie(event) {
     event.preventDefault()
@@ -34,16 +31,16 @@ function Netflix() {
       setDisplay(data.data.results)
     }
     getData();
-    setStyle("showMovieTab");
+    setStyle("showMovieTab")
     setSearchMovie("displaySearch")
   }
-  console.log(display)
+  console.log(displayM)
 
   return (
     <div>
       <div className="NavBar">
           <div className='logo'>
-          <img src={NetflixLogo} onClick={Home} />
+          <img src={NetflixLogo} />
           </div>
 
         <div id="search">
@@ -58,8 +55,8 @@ function Netflix() {
           <h2>The results as per search {movie} are as follows:</h2>
         </div>
         {
-          display &&
-          display.map((data, index) => {
+          displayM &&
+          displayM.map((data, index) => {
             return (
               <div key={index} className='ImageTab' >
                 <div>
