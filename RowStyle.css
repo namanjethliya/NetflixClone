@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.postersTab{
+    display: flex;
+    padding: .15rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+
+}
+
+.posters{
+    width: 150px;
+    height: 200px;
+    padding: .15rem;
+    transition: transform 450ms;
+}
+
+.bigPoster{
+	width: 200px;
+	object-fit: cover;
+	max-height: 250px;
+	transition: transform 450ms;
+    padding: .15rem;
+}
+.bigPoster:hover, .posters:hover{
+	transform: scale(1.08);
+}
+.bigPoster_large, .posters{
+	max-height: 300px;
+}
+.bigPoster_large, .posters{
+	transform: hover(1.09);
+}

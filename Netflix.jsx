@@ -6,13 +6,14 @@ import { useEffect } from 'react'
 import Row from './Row'
 import Banner from './Banner'
 import NetflixLogo from './images/netflix-logo.png'
+import YouTube from 'react-youtube'
+
 
 function Netflix() {
   const [movie, setMovie] = useState('')
   const [displayM, setDisplay] = useState('')
   const [style, setStyle] = useState('searchMovieTab')
   const [searchMovie, setSearchMovie] = useState('display')
-  const [resetHome, setHome] = useState('showMovieTab')
 
   const imageBasePath = 'https://image.tmdb.org/t/p/original/'
 
@@ -78,11 +79,12 @@ function Netflix() {
       <div className={searchMovie}>
       <Banner endPoint={requests.fetchTrending}  />
         <Row
+          headline='TRENDING'
           isBigger={true}
           endpoint={requests.fetchTrending}
         />
         <Row
-          headline1='NETFLIX ORIGINAL'
+          headline1='ORIGINALS'
           endpoint={requests.fetchNetflixOriginals}
         />
         <Row

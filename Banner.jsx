@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import NetflixStyle from './NetflixStyle.css'
-
+import BannerStyle from './BannerStyle.css'
 
 function Banner(props) {
   const [movies, setMovies] = useState([])
