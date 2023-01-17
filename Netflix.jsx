@@ -17,7 +17,6 @@ function Netflix() {
 
   const imageBasePath = 'https://image.tmdb.org/t/p/original/'
 
-
   function handleChange(e) {
     setMovie(e.target.value)
   }
@@ -35,14 +34,14 @@ function Netflix() {
     setStyle("showMovieTab")
     setSearchMovie("displaySearch")
   }
-  console.log(displayM)
+  // console.log(displayM)
 
   return (
     <div>
       <div className="NavBar">
-          <div className='logo'>
+        <div className='logo'>
           <img src={NetflixLogo} />
-          </div>
+        </div>
 
         <div id="search">
           <form onSubmit={showMovie}>
@@ -51,8 +50,8 @@ function Netflix() {
           </form>
         </div>
       </div>
-      <div className={style}> 
-        <div className='searchHeading'> 
+      <div className={style}>
+        <div className='searchHeading'>
           <h2>The results as per search {movie} are as follows:</h2>
         </div>
         {
@@ -61,7 +60,7 @@ function Netflix() {
             return (
               <div key={index} className='ImageTab' >
                 <div>
-                  <img src={`https://image.tmdb.org/t/p/original/${data.poster_path}`} alt={data.original_title || data.name} className='searchImage' />
+                  <img src={`${imageBasePath}${data.poster_path}`} alt={data.original_title || data.name} className='searchImage' />
                 </div>
                 <div className='movieDetails'>
                   <h2 className='movieTitle'>{data.title}</h2>
@@ -77,7 +76,11 @@ function Netflix() {
       </div>
 
       <div className={searchMovie}>
-      <Banner endPoint={requests.fetchTrending}  />
+        <Banner endPoint={requests.fetchTrending} />
+        <Row
+          showBanner={true}
+          endPoint={requests.fetchTrending}
+        />
         <Row
           headline='TRENDING'
           isBigger={true}

@@ -1,4 +1,5 @@
 const API_KEY = 'df41664279ac4a308d8b915accc1f0e4';
+const API_URL = 'https://api.themoviedb.org/3';
 
 const requests = {
   fetchTrending: `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}&language=en-US`,
